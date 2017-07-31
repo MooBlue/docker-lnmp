@@ -5,7 +5,7 @@ nginx:
     links:
       - "php"
     volumes:
-      - ~/work:/opt
+      - ~/work:/etc/nginx
 
 php:
     build: ./php

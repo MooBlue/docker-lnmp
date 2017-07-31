@@ -1,7 +1,7 @@
 nginx:
     build: ./nginx
     ports:
-      - "800:80"
+      - "8000:80"
     links:
       - "php"
     volumes:
@@ -10,7 +10,7 @@ nginx:
 php:
     build: ./php
     ports:
-      - "90000:9000"
+      - "9009:9000"
     links:
       - "mysql"
       - "redis"

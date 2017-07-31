@@ -1,7 +1,7 @@
 FROM php:7.0-fpm
 
-ADD php.ini    /usr/local/etc/php/php.ini
-ADD php-fpm.conf    /usr/local/etc/php-fpm.conf
+#ADD php.ini    /usr/local/etc/php/php.ini
+#ADD php-fpm.conf    /usr/local/etc/php-fpm.conf
 
 COPY redis-3.1.3.tgz /home/redis.tgz
 RUN docker-php-ext-install pdo_mysql \

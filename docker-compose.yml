@@ -5,10 +5,10 @@ nginx:
     links:
       - "php"
     volumes:
-      - ~/work/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ~/work/nginx/conf.d/:/etc/nginx/conf.d/
-      - ~/work/nginx/html/:/etc/nginx/html/
-      - ~/work/nginx/log/:/var/log/nginx/
+      - ~/docker-lnmp/work/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ~/docker-lnmp/work/nginx/conf.d/:/etc/nginx/conf.d/
+      - ~/docker-lnmp/work/nginx/vhost/:/etc/nginx/html/
+      - ~/docker-lnmp/work/nginx/log/:/var/log/nginx/
 
 php:
     build: ./build/php
@@ -18,15 +18,15 @@ php:
       - "mysql"
       - "redis"
     volumes:
-      - ~/work/php/php.ini:/usr/local/etc/php/php.ini
-      - ~/work/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ~/docker-lnmp/work/php/php.ini:/usr/local/etc/php/php.ini
+      - ~/docker-lnmp/work/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
 
 mysql:
     build: ./build/mysql
     ports:
       - "33066:3306"
     volumes:
-      - ~/work/mysql/data:/var/lib/mysql
+      - ~/docker-lnmp/work/mysql/data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: DockerLNMP
 

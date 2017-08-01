@@ -1,11 +1,7 @@
 FROM php:7.1-fpm
 
 # 挂载配置文件
-VOLUME [
-	"php.ini:/usr/local/etc/php/php.ini",
-	"php-fpm.conf:/usr/local/etc/php-fpm.conf",
-	"php-fpm.d:/usr/local/etc/php-fpm.d/"
-]
+VOLUME ["php.ini:/usr/local/etc/php/php.ini","php-fpm.conf:/usr/local/etc/php-fpm.conf","php-fpm.d:/usr/local/etc/php-fpm.d/"]
 
 COPY redis-3.1.3.tgz /home/redis.tgz
 RUN docker-php-ext-install pdo_mysql \

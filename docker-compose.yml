@@ -20,7 +20,6 @@ php:
     volumes:
       - ~/work/php/php.ini:/usr/local/etc/php/php.ini
       - ~/work/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
-      - ~/work/php/php-fpm.d/:/usr/local/etc/php-fpm.d/
 
 mysql:
     build: ./build/mysql

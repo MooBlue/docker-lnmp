@@ -18,6 +18,7 @@ php:
       - "mysql"
       - "redis"
     volumes:
+      - ~/docker-lnmp/work/nginx/vhost/:/etc/nginx/html/
       - ~/docker-lnmp/work/php/php.ini:/usr/local/etc/php/php.ini
       - ~/docker-lnmp/work/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
 

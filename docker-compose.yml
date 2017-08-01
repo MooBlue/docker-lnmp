@@ -5,10 +5,10 @@ nginx:
     links:
       - "php"
     volumes:
-      - ~/work/nginx/nginx.conf:nginx.conf
-      - ~/work/nginx/conf.d/:conf.d
-      - ~/work/nginx/html/:html
-      - ~/work/nginx/log/:logs
+      - ~/work/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ~/work/nginx/conf.d/:/etc/nginx/conf.d/
+      - ~/work/nginx/html/:/etc/nginx/html/
+      - ~/work/nginx/log/:/var/log/nginx/
 
 php:
     build: ./build/php
@@ -18,9 +18,9 @@ php:
       - "mysql"
       - "redis"
     volumes:
-      - ~/work/php/php.ini:php.ini
-      - ~/work/php/php-fpm.conf:php-fpm.conf
-      - ~/work/php/php-fpm.d/:php-fpm.d
+      - ~/work/php/php.ini:/usr/local/etc/php/php.ini
+      - ~/work/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ~/work/php/php-fpm.d/:/usr/local/etc/php-fpm.d/
 
 mysql:
     build: ./build/mysql

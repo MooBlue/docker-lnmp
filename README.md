@@ -1,7 +1,6 @@
-# docker-lnmp
-docker 结合 lnmp 的最佳实践
+# docker-lnmp 使用指南
 
-#### 安装 docker 及 docker-compose
+### 安装 docker 及 docker-compose
 
     # 安装 docker，参考文档
     https://download.daocloud.io/Docker_Mirror/Docker
@@ -20,7 +19,7 @@ docker 结合 lnmp 的最佳实践
     # 每个人有对应的加速地址，访问以下链接进入->【管理中心】-> 【DockerHub 镜像站点】配置加速器
     https://dev.aliyun.com/search.html
     
-#### 构建 docker-lnmp
+### 构建 docker-lnmp
 
     # 下载 docker-lnmp
     cd ~/
@@ -30,7 +29,7 @@ docker 结合 lnmp 的最佳实践
     cd docker-lnmp
     sudo docker-compose up --build -d
     
-#### 常用命令
+### 常用命令
 
     # 查看当前启动的容器
     sudo docker ps

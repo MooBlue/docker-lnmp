@@ -1,5 +1,7 @@
 ## Docker-LNMP 使用指南
 
+Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在短时间内随意构建不同版本的相关服务（PHP、NGINX ...）、分布在不同服务器环境统一，使开发者能够更专注于开发业务本身。
+
 ### 目录结构
 
     /docker-lnmp

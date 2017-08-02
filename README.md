@@ -9,6 +9,29 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
         /work                   资源映射目录，可以在这里放置 php 脚本及服务相关的配置文件
         /docker-compose.yml     compose 配置文件
 
+#### 构建 Docker-LNMP
+
+    cd ~/
+    git clone https://github.com/beautysoft/docker-lnmp.git
+
+    # 如果不在 ~/，自行修改 docker-compose.yml 的相关配置
+    cd docker-lnmp
+    sudo docker-compose up --build -d
+
+#### 常用操作命令
+
+    # 查看当前启动的容器
+    sudo docker ps
+    
+    # 启动部分服务在后边加服务名，不加表示启动所有，-d 表示在后台运行
+    sudo docker-compose up [nginx|php|mysql|redis|mongo] -d
+    
+    # 停止和启动类似
+    sudo docker-compose stop [nginx|php|mysql|redis|mongo]
+    
+    # 如果更改了 dockerfile，比如在 php 里增加了一些其他扩展，需要重新编译
+    sudo docker-compose build [php|...]
+
 #### 安装 docker 和 docker-compose
 
 1、安装 docker 参考 daocloud 提供的文档
@@ -34,26 +57,3 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 
     # DaoCloud 加速器配置文档
     # http://guide.daocloud.io/dcs/daocloud-9153151.html
-
-#### 构建 Docker-LNMP
-
-    cd ~/
-    git clone https://github.com/beautysoft/docker-lnmp.git
-
-    # 如果不在 ~/，自行修改 docker-compose.yml 的相关配置
-    cd docker-lnmp
-    sudo docker-compose up --build -d
-
-#### 常用操作命令
-
-    # 查看当前启动的容器
-    sudo docker ps
-    
-    # 启动部分服务在后边加服务名，不加表示启动所有，-d 表示在后台运行
-    sudo docker-compose up [nginx|php|mysql|redis|mongo] -d
-    
-    # 停止和启动类似
-    sudo docker-compose stop [nginx|php|mysql|redis|mongo]
-    
-    # 如果更改了 dockerfile，比如在 php 里增加了一些其他扩展，需要重新编译
-    sudo docker-compose build [php|...]

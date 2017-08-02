@@ -11,6 +11,8 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 
 #### 构建 Docker-LNMP
 
+没有安装 Docker 的同学移步 [安装教程](https://github.com/beautysoft/docker-lnmp#安装-docker-和-docker-compose)
+
     cd ~/
     git clone https://github.com/beautysoft/docker-lnmp.git
 
@@ -32,7 +34,7 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     # 如果更改了 dockerfile，比如在 php 里增加了一些其他扩展，需要重新编译
     sudo docker-compose build [php|...]
 
-#### 安装 docker 和 docker-compose
+## 安装 Docker 及相关工具
 
 1、安装 docker 参考 daocloud 提供的文档
     

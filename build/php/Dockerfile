@@ -8,3 +8,6 @@ RUN docker-php-ext-install pdo_mysql \
 # 安装 composer
 ADD composer.phar /usr/local/bin/composer
 RUN chmod 755 /usr/local/bin/composer
+
+# 设置中国源
+RUN composer config -g repo.packagist composer https://packagist.laravel-china.org

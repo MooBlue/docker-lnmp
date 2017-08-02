@@ -1,7 +1,7 @@
 nginx:
     build: ./build/nginx
     ports:
-      - "8000:80"
+      - "80:80"
     links:
       - "php"
     volumes:
@@ -13,10 +13,11 @@ nginx:
 php:
     build: ./build/php
     ports:
-      - "9009:9000"
+      - "9000:9000"
     links:
       - "mysql"
       - "redis"
+      - "mongo"
     volumes:
       - ~/docker-lnmp/work/wwwroot/:/etc/nginx/html/
       - ~/docker-lnmp/work/php/php.ini:/usr/local/etc/php/php.ini
@@ -25,7 +26,7 @@ php:
 mysql:
     build: ./build/mysql
     ports:
-      - "33066:3306"
+      - "3306:3306"
     volumes:
       - ~/docker-lnmp/work/mysql/data:/var/lib/mysql
     environment:
@@ -34,4 +35,11 @@ mysql:
 redis:
     build: ./build/redis
     ports:
-      - "63799:6379"
+      - "6379:6379"
+
+mongo:
+    build: ./build/mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/docker-lnmp/work/mongo/data:/data/db

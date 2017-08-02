@@ -52,7 +52,7 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     sudo service docker start
     sudo docker info    
 
-4、设置加速器（这简直是一定的）
+4、配置加速器（这简直是一定的）
 
     # 阿里云加速器
     # 每个人有对应的加速地址，访问 `https://dev.aliyun.com` ->【管理中心】-> 【DockerHub 镜像站点】配置加速器

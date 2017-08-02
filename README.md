@@ -6,7 +6,7 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 
     /docker-lnmp
         /build                  镜像构建目录
-        /work                   资源映射目录，可以在这里放置 php 脚本及服务相关的配置文件
+        /work                   资源映射目录，可以在这里放置 php 脚本及服务相关的配置文件以保持持久化
         /docker-compose.yml     compose 配置文件
 
 #### 构建 Docker-LNMP

@@ -21,8 +21,8 @@ php71:
       - "redis"
     volumes:
       - ~/docker-lnmp/work/wwwroot/:/etc/nginx/html/
-      - ~/docker-lnmp/work/php/php.ini:/usr/local/etc/php/php.ini
-      - ~/docker-lnmp/work/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ~/docker-lnmp/work/php71/php.ini:/usr/local/etc/php/php.ini
+      - ~/docker-lnmp/work/php71/php-fpm.conf:/usr/local/etc/php-fpm.conf
 
 php56:
     build: ./build/php56
@@ -32,9 +32,9 @@ php56:
       - "mysql"
       - "mongo"
     volumes:
-      - /Art/docker-lnmp/work/wwwroot/:/etc/nginx/html/
-      - /Art/docker-lnmp/work/php/php.ini:/usr/local/etc/php/php.ini
-      - /Art/docker-lnmp/work/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ~/docker-lnmp/work/wwwroot/:/etc/nginx/html/
+      - ~/docker-lnmp/work/php56/php.ini:/usr/local/etc/php/php.ini
+      - ~/docker-lnmp/work/php56/php-fpm.conf:/usr/local/etc/php-fpm.conf
 
 mysql:
     build: ./build/mysql

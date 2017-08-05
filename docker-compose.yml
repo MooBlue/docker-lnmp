@@ -4,25 +4,37 @@ nginx:
       - "80:80"
       - "443:443"
     links:
-      - "php"
+      - "php71"
+      - "php56"
     volumes:
       - ~/docker-lnmp/work/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ~/docker-lnmp/work/nginx/conf.d/:/etc/nginx/conf.d/
       - ~/docker-lnmp/work/wwwroot/:/etc/nginx/html/
       - ~/docker-lnmp/work/nginx/log/:/var/log/nginx/
 
-php:
-    build: ./build/php
+php71:
+    build: ./build/php71
     ports:
-      - "9000:9000"
+      - "9071:9000"
     links:
       - "mysql"
       - "redis"
-      - "mongo"
     volumes:
       - ~/docker-lnmp/work/wwwroot/:/etc/nginx/html/
       - ~/docker-lnmp/work/php/php.ini:/usr/local/etc/php/php.ini
       - ~/docker-lnmp/work/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+
+php56:
+    build: ./build/php56
+    ports:
+      - "9056:9000"
+    links:
+      - "mysql"
+      - "mongo"
+    volumes:
+      - /Art/docker-lnmp/work/wwwroot/:/etc/nginx/html/
+      - /Art/docker-lnmp/work/php/php.ini:/usr/local/etc/php/php.ini
+      - /Art/docker-lnmp/work/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
 
 mysql:
     build: ./build/mysql

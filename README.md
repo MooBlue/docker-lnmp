@@ -3,7 +3,7 @@
 Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在短时间内随意构建不同版本的相关服务、环境统一分布在不同服务器等，使开发者能够更专注于开发业务本身。
 
     当前版本   ：1.0
-    默认服务   ：PHP-FPM 7.1、Nginx 1.12.1、mysql 5.6、redis 3.0、MongoDB Latest
+    默认服务   ：PHP-FPM 7.1、PHP-FPM 5.6、Nginx 1.12.1、mysql 5.6、redis 3.0、MongoDB Latest
 
 #### 目录结构
 

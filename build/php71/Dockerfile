@@ -7,6 +7,7 @@ COPY mcrypt-1.0.0.tgz /home/mcrypt.tgz
 # 更换 apt-get 源
 RUN mv /etc/apt/sources.list /etc/apt/source.list.bak
 COPY sources.list /etc/apt/sources.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 16126D3A3E5C1192
 
 # 安装扩展依赖
 RUN apt-get update && apt-get upgrade && apt-get install -y vi vim git libmcrypt-dev libmhash-dev

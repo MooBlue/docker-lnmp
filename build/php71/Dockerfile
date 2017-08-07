@@ -5,7 +5,7 @@ COPY redis-3.1.3.tgz /home/redis.tgz
 COPY mcrypt-1.0.0.tgz /home/mcrypt.tgz
 
 # 安装扩展依赖
-RUN apt-get update && apt-get install -y vi vim git libmcrypt-dev libmhash-dev
+RUN apt-get update && apt-get upgrade && apt-get install -y vi vim git libmcrypt-dev libmhash-dev
 
 # 安装扩展
 RUN docker-php-ext-install pdo_mysql \

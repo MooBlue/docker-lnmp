@@ -33,8 +33,12 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     
     # 停止和启动类似
     sudo docker-compose stop [nginx|php|mysql|redis|mongo]
+
+#### 修改镜像文件怎么处理
     
-    # 如果更改了 dockerfile，比如在 php 里增加了一些其他扩展，需要重新编译
+    # 比如在 php 里新增一个扩展
+    # 1、更改对应的 docker-lnmp/build/php71/dockerfile
+    # 2、重新构建镜像
     sudo docker-compose build [php|...]
 
 ## 安装 Docker 及相关工具
@@ -62,3 +66,6 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 
     # DaoCloud 加速器配置文档
     # http://guide.daocloud.io/dcs/daocloud-9153151.html
+
+## License
+MIT

@@ -19,7 +19,7 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     cd ~/
     git clone https://github.com/beautysoft/docker-lnmp.git
 
-    # 如果不在 ~/，自行修改 docker-compose.yml 的相关配置
+    # 如果不在 ~/，自行修改 docker-compose.yml 的相关配置，默认构建所有服务，不需要这么多可以注释掉一部分
     cd docker-lnmp
     sudo docker-compose up --build -d
 
@@ -29,17 +29,17 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     sudo docker ps
     
     # 启动部分服务在后边加服务名，不加表示启动所有，-d 表示在后台运行
-    sudo docker-compose up [nginx|php|mysql|redis|mongo] -d
+    sudo docker-compose up [nginx|php71|php56|mysql|redis|mongo] -d
     
     # 停止和启动类似
-    sudo docker-compose stop [nginx|php|mysql|redis|mongo]
+    sudo docker-compose stop [nginx|php71|php56|mysql|redis|mongo]
 
 #### 修改镜像文件怎么处理
     
     # 比如在 php 里新增一个扩展
     # 1、更改对应的 docker-lnmp/build/php71/dockerfile
     # 2、重新构建镜像
-    sudo docker-compose build [php|...]
+    sudo docker-compose build [php71|...]
 
 ## 安装 Docker 及相关工具
 

@@ -14,9 +14,9 @@ RUN gpg -a --export 40976EAF437D05B5 | apt-key add -
 RUN apt-get update && apt-get -y upgrade && apt-get install -y cron vim git libmcrypt-dev libmhash-dev
 
 # 安装扩展
-RUN docker-php-ext-install pdo_mysql \
-    && pecl install /home/redis.tgz && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini \
-    && pecl install /home/mcrypt.tgz && echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini
+RUN docker-php-ext-install pdo_mysql
+RUN pecl install /home/redis.tgz && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
+RUN pecl install /home/mcrypt.tgz && echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini
 
 # 安装 composer
 ADD composer.phar /usr/local/bin/composer

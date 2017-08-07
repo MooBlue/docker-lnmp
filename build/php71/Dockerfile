@@ -11,7 +11,8 @@ RUN gpg --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5
 RUN gpg -a --export 40976EAF437D05B5 | apt-key add -
 
 # 安装扩展依赖
-RUN apt-get update && apt-get upgrade && apt-get install -yqq vi vim git libmcrypt-dev libmhash-dev
+RUN apt-get update && apt-get upgrade && apt-get install -yqq libmcrypt-dev libmhash-dev
+#RUN apt-get update && apt-get upgrade && apt-get install -yqq vi vim git libmcrypt-dev libmhash-dev
 
 # 安装扩展
 RUN docker-php-ext-install pdo_mysql \

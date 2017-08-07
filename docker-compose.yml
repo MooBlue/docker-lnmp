@@ -23,7 +23,6 @@ php71:
       - ~/docker-lnmp/work/wwwroot/:/etc/nginx/html/
       - ~/docker-lnmp/work/php71/php.ini:/usr/local/etc/php/php.ini
       - ~/docker-lnmp/work/php71/php-fpm.conf:/usr/local/etc/php-fpm.conf
-      - ~/docker-lnmp/work/php71/sources.list:/etc/apt/sources.list
 
 php56:
     build: ./build/php56

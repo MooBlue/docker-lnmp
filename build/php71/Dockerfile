@@ -4,6 +4,10 @@ FROM php:7.1-fpm
 COPY redis-3.1.3.tgz /home/redis.tgz
 COPY mcrypt-1.0.0.tgz /home/mcrypt.tgz
 
+# 更换 apt-get 源
+RUN mv /etc/apt/sources.list /etc/apt/source.list.bak
+COPY sources.list /etc/apt/sources.list
+
 # 安装扩展依赖
 RUN apt-get update && apt-get upgrade && apt-get install -y vi vim git libmcrypt-dev libmhash-dev
 

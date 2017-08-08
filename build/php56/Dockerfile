@@ -1,9 +1,9 @@
 FROM php:5.6-fpm
 
 # 更换 apt-get 源
-RUN mv /etc/apt/sources.list /etc/apt/source.list.bak \
-	&& COPY sources.list /etc/apt/sources.list \
-	&& gpg --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 \
+RUN mv /etc/apt/sources.list /etc/apt/source.list.bak
+COPY sources.list /etc/apt/sources.list
+RUN gpg --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 \
 	&& gpg -a --export 40976EAF437D05B5 | apt-key add -
 	&& apt-get update \
 	&& apt-get -y upgrade

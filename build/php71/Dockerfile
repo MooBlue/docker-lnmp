@@ -29,4 +29,4 @@ RUN composer config -g repo.packagist composer https://packagist.laravel-china.o
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # 同步时间
-ntpdate 182.92.12.11
+RUN ntpdate 182.92.12.11

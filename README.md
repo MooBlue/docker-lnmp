@@ -10,6 +10,7 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     /docker-lnmp
         /build                  镜像构建目录
         /work                   持久化目录，包括 php 脚本、相关服务配置文件、数据库数据等
+        /.env-example           配置文件
         /docker-compose.yml     compose 配置文件
 
 #### 构建 Docker-LNMP
@@ -19,8 +20,10 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     cd ~/
     git clone https://github.com/beautysoft/docker-lnmp.git
 
-    # 如果不在 ~/，自行修改 docker-compose.yml 的相关配置，默认构建所有服务，不需要这么多可以注释掉一部分
     cd docker-lnmp
+    mv .env-example .env
+
+    # 如果当前目录不在 ~/ 修改 .env 文件，默认会构建所有服务
     sudo docker-compose up --build -d
 
 #### 常用操作命令

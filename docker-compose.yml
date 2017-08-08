@@ -14,6 +14,7 @@ nginx:
 
 php71:
     build: ./build/php71
+    privileged: true
     ports:
       - "9071:9000"
     links:

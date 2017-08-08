@@ -11,7 +11,7 @@ RUN gpg --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5
 RUN gpg -a --export 40976EAF437D05B5 | apt-key add -
 
 # 安装扩展依赖
-RUN apt-get update && apt-get -y upgrade && apt-get install -y cron vim unzip git libmcrypt-dev libmhash-dev
+RUN apt-get update && apt-get -y upgrade && apt-get install -y ntpdate cron vim unzip git libmcrypt-dev libmhash-dev
 
 # 安装扩展
 RUN docker-php-ext-install pdo_mysql
@@ -24,3 +24,9 @@ RUN chmod 755 /usr/local/bin/composer
 
 # 设置中国源
 RUN composer config -g repo.packagist composer https://packagist.laravel-china.org
+
+# 设置时区
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+# 同步时间
+ntpdate 182.92.12.11

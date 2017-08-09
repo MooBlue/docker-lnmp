@@ -32,5 +32,5 @@ RUN apt-get install -y libmcrypt-dev libmhash-dev \
 
 # 安装 composer 并设置中国源
 ADD composer.phar /usr/local/bin/composer
-RUN chmod 755 /usr/local/bin/composer \
-	&& composer config -g repo.packagist composer https://packagist.laravel-china.org
+RUN chmod 755 /usr/local/bin/composer
+RUN composer config -g repo.packagist composer https://packagist.laravel-china.org

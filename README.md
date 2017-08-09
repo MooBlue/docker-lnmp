@@ -23,7 +23,7 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     cd docker-lnmp
     mv .env-example .env
 
-    # 如果当前目录不在 ~/ 修改 .env 文件，默认会构建所有服务
+    # 如果当前目录不在 ~/ 修改 .env 文件，默认会构建所有服务,MySQL root 初始密码：DockerLNMP
     sudo docker-compose up --build -d
 
 #### 常用操作命令

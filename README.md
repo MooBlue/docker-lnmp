@@ -36,14 +36,14 @@
     # 停止和启动类似
     sudo docker-compose stop [nginx|php71|php56|mysql|redis|mongo]
 
-#### 修改镜像文件怎么处理
+#### 修改镜像文件怎么处理？
     
     # 比如在 php 里新增一个扩展
     # 1、更改对应的 docker-lnmp/build/php71/dockerfile
     # 2、重新构建镜像
     sudo docker-compose build [php71|...]
 
-#### 如何设置开机启动服务
+#### 如何设置开机启动服务？
 
     # 编辑开机启动文件，写入  cd /home/your/docker-lnmp && composer up -d
     # 注意这里不用 sudo，本身是使用 root 运行的

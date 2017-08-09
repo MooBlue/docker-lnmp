@@ -1,19 +1,18 @@
-## 使用指南
+## Docker LNMP 使用指南
 
 Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在短时间内随意构建不同版本的相关服务、环境统一分布在不同服务器等，使开发者能够更专注于开发业务本身。
 
-    当前版本   ：1.0
-    默认服务   ：PHP-FPM 7.1、PHP-FPM 5.6、Nginx 1.12.1、mysql 5.6、redis 3.0、MongoDB Latest
+    # 当前版本   ：1.0
+    # 默认服务   ：PHP-FPM 7.1、PHP-FPM 5.6、Nginx 1.12.1、mysql 5.6、redis 3.0、MongoDB Latest
+    
+    # 目录结构
+        /docker-lnmp
+            /build                  镜像构建目录
+            /work                   持久化目录，包括 php 脚本、相关服务配置文件、数据库数据等
+            /.env-example           配置文件
+            /docker-compose.yml     compose 配置文件
 
-#### 目录结构
-
-    /docker-lnmp
-        /build                  镜像构建目录
-        /work                   持久化目录，包括 php 脚本、相关服务配置文件、数据库数据等
-        /.env-example           配置文件
-        /docker-compose.yml     compose 配置文件
-
-#### 构建 Docker-LNMP
+### 构建 Docker-LNMP
 
 没有安装 Docker 的同学移步 [安装教程](https://github.com/beautysoft/docker-lnmp#安装-docker-及相关工具)
 
@@ -26,7 +25,7 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     # 如果当前目录不在 ~/ 修改 .env 文件，默认会构建所有服务,MySQL root 初始密码：DockerLNMP
     sudo docker-compose up --build -d
 
-#### 常用操作命令
+### 常用操作命令
 
     # 查看当前启动的容器
     sudo docker ps
@@ -37,7 +36,7 @@ Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     # 停止和启动类似
     sudo docker-compose stop [nginx|php71|php56|mysql|redis|mongo]
 
-#### 修改镜像文件怎么处理
+### 修改镜像文件怎么处理
     
     # 比如在 php 里新增一个扩展
     # 1、更改对应的 docker-lnmp/build/php71/dockerfile

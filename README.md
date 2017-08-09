@@ -49,6 +49,8 @@
     
     https://download.daocloud.io/Docker_Mirror/Docker
 
+    # 注意按照文档如果执行类似 install docker-ce=17.03.1* 出错，执行 install docker-ce 即可
+
 2、安装 docker-compose
 
     curl -L https://get.daocloud.io/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
@@ -61,13 +63,16 @@
     sudo service docker start
     sudo docker info    
 
-4、配置加速器（这简直是一定的）
+4、配置 DockerHub 加速器（这简直是一定的）
 
     # 阿里云加速器
     # 每个人有对应的加速地址，访问 `https://dev.aliyun.com` ->【管理中心】-> 【DockerHub 镜像站点】配置加速器
 
-    # DaoCloud 加速器配置文档
+    # DaoCloud 加速器
     # http://guide.daocloud.io/dcs/daocloud-9153151.html
+
+    # 腾讯云加速器
+    # https://www.qcloud.com/document/product/457/7207
 
 ## License
 MIT

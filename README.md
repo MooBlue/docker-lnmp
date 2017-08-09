@@ -12,7 +12,7 @@
             /.env-example           配置文件
             /docker-compose.yml     compose 配置文件
 
-### 构建 Docker-LNMP
+### 安装
 
 没有安装 Docker 的同学移步 [安装教程](https://github.com/beautysoft/docker-lnmp#安装-docker-及相关工具)
 
@@ -25,7 +25,7 @@
     # 如果当前目录不在 ~/ 修改 .env 文件，默认会构建所有服务,MySQL root 初始密码：DockerLNMP
     sudo docker-compose up --build -d
 
-### 常用操作命令
+#### 常用操作命令
 
     # 查看当前启动的容器
     sudo docker ps
@@ -36,7 +36,7 @@
     # 停止和启动类似
     sudo docker-compose stop [nginx|php71|php56|mysql|redis|mongo]
 
-### 修改镜像文件怎么处理
+#### 修改镜像文件怎么处理
     
     # 比如在 php 里新增一个扩展
     # 1、更改对应的 docker-lnmp/build/php71/dockerfile

@@ -43,6 +43,16 @@
     # 2、重新构建镜像
     sudo docker-compose build [php71|...]
 
+#### 如何设置开机启动服务
+
+    # 编辑开机启动文件，写入  cd /home/your/docker-lnmp && composer up -d
+    # 注意这里不用 sudo，本身是使用 root 运行的
+    # 另外 docker-lnmp 如果不在 /root/ 下，需要编辑 .env 里 APP_PATH 设置绝对路径
+    sudo vim /etc/rc.local
+
+    # 重启测试
+    sudo reboot
+
 ## 安装 Docker 及相关工具
 
 1、安装 docker 参考 daocloud 提供的文档

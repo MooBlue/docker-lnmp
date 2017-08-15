@@ -1,10 +1,10 @@
 FROM php:7.1-fpm
 
 # 更换 apt-get 源
-RUN mv /etc/apt/sources.list /etc/apt/source.list.bak \
-	&& COPY sources.list /etc/apt/sources.list \
-	&& gpg --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 \
-	&& gpg -a --export 40976EAF437D05B5 | apt-key add -
+RUN mv /etc/apt/sources.list /etc/apt/source.list.bak
+COPY sources.list /etc/apt/sources.list
+RUN gpg --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 \
+	&& gpg -a --export 40976EAF437D05B5 | apt-key add - \
 	&& apt-get update \
 	&& apt-get -y upgrade
 
@@ -32,5 +32,5 @@ RUN apt-get install -y libmcrypt-dev libmhash-dev \
 
 # 安装 composer 并设置中国源
 ADD composer.phar /usr/local/bin/composer
-RUN chmod 755 /usr/local/bin/composer \
-	&& composer config -g repo.packagist composer https://packagist.laravel-china.org
+RUN chmod 755 /usr/local/bin/composer
+RUN composer config -g repo.packagist composer https://packagist.laravel-china.org

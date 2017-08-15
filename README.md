@@ -45,7 +45,7 @@
 
 #### 如何设置开机启动服务？
 
-    # 编辑开机启动文件，写入  cd /home/your/docker-lnmp && composer up -d
+    # 编辑开机启动文件，写入  cd /home/your/docker-lnmp && compose up -d
     # 注意这里不用 sudo，本身是使用 root 运行的
     # 另外 docker-lnmp 如果不在 /root/ 下，需要编辑 .env 里 APP_PATH 设置绝对路径
     sudo vim /etc/rc.local

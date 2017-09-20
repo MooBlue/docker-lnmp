@@ -9,7 +9,7 @@ RUN gpg --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 \
 	&& apt-get -y upgrade
 
 # 安装基础组件
-RUN apt-get install -y libpng-dev ntpdate cron vim unzip git libssl-dev
+RUN apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev ntpdate cron vim unzip git libssl-dev
 
 # 设置时区 && 同步时间
 ENV TZ=Asia/Shanghai

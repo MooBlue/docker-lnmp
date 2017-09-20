@@ -9,7 +9,7 @@ RUN gpg --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5 \
 	&& apt-get -y upgrade
 
 # 安装基础组件
-RUN apt-get install -y ntpdate cron vim unzip git libssl-dev
+RUN apt-get install -y libpng-dev ntpdate cron vim unzip git libssl-dev
 
 # 设置时区 && 同步时间
 ENV TZ=Asia/Shanghai
@@ -26,5 +26,5 @@ RUN phpize \
 	&& make && make install \
 	&& echo "extension=mongo.so" > /usr/local/etc/php/conf.d/mongo.ini
 
-# 安装 PDO_MYSQL 扩展
-RUN docker-php-ext-install pdo_mysql
+# 安装 PDO_MYSQL、GD 扩展
+RUN docker-php-ext-install gd pdo_mysql

@@ -17,6 +17,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 	&& ntpdate 182.92.12.11
 
 # 安装 PDO_MYSQL、GD 扩展
+RUN docker-php-ext-configure gd --with-freetype-dir --with-jpeg-dir
 RUN docker-php-ext-install gd pdo_mysql
 
 # 安装 Redis 扩展

@@ -16,9 +16,9 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 	&& ntpdate 182.92.12.11
 
-# 安装 PDO_MYSQL、GD 扩展
+# 安装扩展
 RUN docker-php-ext-configure gd --with-freetype-dir --with-jpeg-dir
-RUN docker-php-ext-install gd pdo_mysql
+RUN docker-php-ext-install gd pdo_mysql mysqli
 
 # 安装 Redis 扩展
 COPY redis-3.1.3.tgz /home/redis.tgz

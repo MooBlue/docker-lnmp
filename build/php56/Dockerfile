@@ -26,6 +26,6 @@ RUN phpize \
 	&& make && make install \
 	&& echo "extension=mongo.so" > /usr/local/etc/php/conf.d/mongo.ini
 
-# 安装 PDO_MYSQL、GD 扩展
+# 安装扩展
 RUN docker-php-ext-configure gd --with-freetype-dir --with-jpeg-dir
-RUN docker-php-ext-install gd pdo_mysql
+RUN docker-php-ext-install gd pdo_mysql mysqli

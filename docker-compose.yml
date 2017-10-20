@@ -47,7 +47,7 @@
       volumes:
         - ${APP_PATH}work/mysql/data:/var/lib/mysql
       environment:
-        MYSQL_ROOT_PASSWORD: DockerLNMP
+        MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
 
   redis:
       build: ./build/redis

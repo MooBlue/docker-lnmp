@@ -25,6 +25,10 @@
     # 如果当前目录不在 ~/ 修改 .env 文件，默认会构建所有服务,MySQL root 初始密码：DockerLNMP
     sudo docker-compose up --build -d
 
+启动成功访问 `localhost` 出现安装成功页面
+
+<img src="https://static.phptalk.cn/docker-lnmp.jpg"/>
+
 #### 常用操作命令
 
     # 查看当前启动的容器

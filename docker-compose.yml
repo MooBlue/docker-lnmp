@@ -31,3 +31,10 @@
         - ${APP_PATH}work/nginx/conf.d/:/etc/nginx/conf.d/
         - ${APP_PATH}work/wwwroot/:/etc/nginx/html/
         - ${APP_PATH}work/nginx/log/:/var/log/nginx/
+  java:
+      build: ./build/java
+      privileged: true
+      ports:
+        - "8089:8080"
+      volumes:
+        - ${APP_PATH}work/java/:/java/

@@ -31,7 +31,7 @@ mysql:
       - "3366:3306"
     volumes:
       - ${APP_PATH}work/components/mysql/data:/var/lib/mysql
-      - ${APP_PATH}work/components/mysql/log:/var/log/mysql
+      - ${APP_PATH}work/components/mysql/log/error.log:/var/log/mysql/error.log
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
 

@@ -1,5 +1,9 @@
 FROM php:7.1-fpm
 
+# 更改时区
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # 更换 apt-get 源
 RUN mv /etc/apt/sources.list /etc/apt/source.list.bak
 COPY sources.list /etc/apt/sources.list

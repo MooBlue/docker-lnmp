@@ -1,16 +1,22 @@
-## Docker LNMP
+## Docker LNMP 2.0
 
 > Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在短时间内随意构建不同版本的相关服务、环境统一分布在不同服务器等，使开发者能够更专注于开发业务本身。
 
-    # 当前版本   ：1.0
-    # 默认服务   ：PHP-FPM 7.1、PHP-FPM 5.6、Nginx 1.12.1、mysql 5.6、redis 3.0、MongoDB Latest
+    # 当前版本   ：2.0
+    # 默认服务   ：PHP-FPM 7.1、Nginx 1.12.1、mysql 5.6、redis 3.2
+    # 服务默认端口：http:80/443，php-fpm71:9071，mysql:3366，redis:6399
     
     # 目录结构
-        /docker-lnmp
-            /build                  镜像构建目录
-            /work                   持久化目录，包括 php 脚本、相关服务配置文件、数据库数据等
-            /.env-example           配置文件
-            /docker-compose.yml     compose 配置文件
+        |docker-lnmp
+        |----/build                  镜像构建目录
+        |----/work                   持久化目录
+        |--------/components/        组件库
+        |------------/component      组件，包括了数据、配置文件、日志等持久化数据
+        |-----------------/config    组件的配置目录
+        |-----------------/log       组件的日志目录
+        |--------/wwwroot            WEB 文件目录
+        |----/.env-example           配置文件
+        |----/docker-compose.yml     docker compose 配置文件
 
 ### 安装
 
@@ -35,10 +41,16 @@
     sudo docker ps
     
     # 启动部分服务在后边加服务名，不加表示启动所有，-d 表示在后台运行
-    sudo docker-compose up [nginx|php71|php56|mysql|redis|mongo] -d
+    sudo docker-compose up [nginx|php71|mysql|redis] -d
     
     # 停止和启动类似
-    sudo docker-compose stop [nginx|php71|php56|mysql|redis|mongo]
+    sudo docker-compose stop [nginx|php71|mysql|redis]
+
+    # 删除所有未运行的容器
+    sudo docker rm $(docker ps -a -q)
+
+    # 删除所有镜像，-f 可以强制删除
+    sudo docker rmi $(docker images -q)
 
 #### 修改镜像文件怎么处理？
     

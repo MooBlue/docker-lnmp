@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Docker LNMP</title>
+	<title>Docker LNMP 2.0</title>
 	<style type="text/css">
 		html{
 			font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%
@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<p align="center" class="mine">欢迎使用 Docker LNMP</p>
+<p align="center" class="mine">欢迎使用 Docker LNMP 2.0</p>
 
 <footer>
 	<a href="https://github.com/beautysoft/docker-lnmp" target="_blank">查看说明文档</a>

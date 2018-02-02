@@ -6,12 +6,7 @@ COPY sources.list /etc/apt/sources.list
 RUN  apt-get -o Acquire::Check-Valid-Until=false update && apt-get -y upgrade
 
 # 安装基础组件
-RUN apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev ntpdate cron vim unzip git
-
-# 设置时区 && 同步时间
-ENV TZ=Asia/Shanghai
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
-	&& ntpdate 182.92.12.11
+RUN apt-get install -y --no-install-recommends libpng-dev libjpeg-dev libfreetype6-dev ntpdate cron vim unzip git
 
 # 安装扩展
 RUN docker-php-ext-configure gd --with-freetype-dir --with-jpeg-dir

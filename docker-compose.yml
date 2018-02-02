@@ -32,7 +32,6 @@ mysql:
     volumes:
       - ${APP_PATH}work/components/mysql/data:/var/lib/mysql
       - ${APP_PATH}work/components/mysql/log:/var/log/mysql
-      - ${APP_PATH}work/components/mysql/config:/etc/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
 

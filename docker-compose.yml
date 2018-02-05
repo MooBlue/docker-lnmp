@@ -1,3 +1,6 @@
+
+### Nginx 容器 #########################################
+
 nginx:
     build: ./build/nginx
     privileged: true
@@ -10,6 +13,10 @@ nginx:
       - ${APP_PATH}work/wwwroot:/etc/nginx/html/
       - ${APP_PATH}work/components/nginx/config/conf.d:/etc/nginx/conf.d
       - ${APP_PATH}work/components/nginx/log:/var/log/nginx
+    environment:
+      TIME_ZONE: ${GLOBAL_TIME_ZONE}
+
+### PHP 容器 #########################################
 
 php71:
     build: ./build/php71
@@ -23,6 +30,11 @@ php71:
       - ${APP_PATH}work/wwwroot:/etc/nginx/html
       - ${APP_PATH}work/components/php71/config/php.ini:/usr/local/etc/php/php.ini
       - ${APP_PATH}work/components/php71/log:/var/log
+    environment:
+      TIME_ZONE: ${GLOBAL_TIME_ZONE}
+      CHANGE_SOURCE: ${GLOBAL_CHANGE_SOURCE}
+
+### Mysql 容器 #########################################
 
 mysql:
     build: ./build/mysql
@@ -35,9 +47,17 @@ mysql:
       - ${APP_PATH}work/components/mysql/log/error.log:/var/log/mysql/error.log
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      TIME_ZONE: ${GLOBAL_TIME_ZONE}
+
+### Redis 容器 #########################################
 
 redis:
     build: ./build/redis
     privileged: true
     ports:
       - "6399:6379"
+    volumes:
+      - ${APP_PATH}work/components/redis/config/redis.conf:/usr/local/etc/redis/redis.conf
+      - ${APP_PATH}work/components/redis/log/redis.log:/var/log/redis/redis.log
+    environment:
+      TIME_ZONE: ${GLOBAL_TIME_ZONE}

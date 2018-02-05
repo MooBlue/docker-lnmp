@@ -1,12 +1,18 @@
 FROM php:7.1-fpm
 
 # 更改时区
-ENV TZ=Asia/Shanghai
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+ARG TIME_ZONE=UTC
+ENV TIME_ZONE ${TIME_ZONE}
+RUN ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone
 
-# 更换 apt-get 源
-RUN mv /etc/apt/sources.list /etc/apt/source.list.bak
-COPY sources.list /etc/apt/sources.list
+# 是否更换源
+ARG CHANGE_SOURCE=false
+
+RUN if [ ${CHANGE_SOURCE} = true ]; then \
+	RUN mv /etc/apt/sources.list /etc/apt/source.list.bak
+	COPY sources.list /etc/apt/sources.list
+;fi
+
 RUN  apt-get -o Acquire::Check-Valid-Until=false update && apt-get -y upgrade
 
 # 安装基础组件
@@ -27,7 +33,11 @@ RUN apt-get install -y libmcrypt-dev libmhash-dev \
 	&& pecl install /home/mcrypt.tgz \
 	&& echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini
 
-# 安装 composer 并设置中国源
+# 安装 composer
 ADD composer.phar /usr/local/bin/composer
 RUN chmod 755 /usr/local/bin/composer
-RUN composer config -g repo.packagist composer https://packagist.laravel-china.org
+
+# 是否设置中国源
+RUN if [ ${CHANGE_SOURCE} = true ]; then \
+	RUN composer config -g repo.packagist composer https://packagist.laravel-china.org
+;fi

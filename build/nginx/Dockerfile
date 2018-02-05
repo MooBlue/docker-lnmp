@@ -1,8 +1,9 @@
 FROM nginx:1.12.1
 
 # 更改时区
-ENV TZ=Asia/Shanghai
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+ARG TIME_ZONE=UTC
+ENV TIME_ZONE ${TIME_ZONE}
+RUN ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone
 
 # 更改权限
 RUN mkdir /etc/nginx/html

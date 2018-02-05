@@ -8,10 +8,11 @@ RUN ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /
 # 是否更换源
 ARG CHANGE_SOURCE=false
 
+COPY sources.list /etc/apt/china.sources.list
+
 RUN if [ ${CHANGE_SOURCE} = true ]; then \
-	RUN mv /etc/apt/sources.list /etc/apt/source.list.bak
-	COPY sources.list /etc/apt/sources.list
-;fi
+	mv /etc/apt/sources.list /etc/apt/source.list.bak && mv /etc/apt/china.sources.list /etc/apt/sources.list \
+; fi
 
 RUN  apt-get -o Acquire::Check-Valid-Until=false update && apt-get -y upgrade
 
@@ -39,5 +40,5 @@ RUN chmod 755 /usr/local/bin/composer
 
 # 是否设置中国源
 RUN if [ ${CHANGE_SOURCE} = true ]; then \
-	RUN composer config -g repo.packagist composer https://packagist.laravel-china.org
+	composer config -g repo.packagist composer https://packagist.laravel-china.org \
 ;fi

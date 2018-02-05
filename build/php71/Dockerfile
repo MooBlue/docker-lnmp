@@ -1,18 +1,18 @@
 FROM php:7.1-fpm
 
-# 更改时区
 ARG TIME_ZONE=UTC
 ENV TIME_ZONE ${TIME_ZONE}
+
+# 更改时区
 RUN ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone
 
 # 是否更换源
-ARG CHANGE_SOURCE=false
-
 COPY sources.list /etc/apt/china.sources.list
 
-RUN if [ ${CHANGE_SOURCE} = true ]; then \
+ARG GLOBAL_CHANGE_SOURCE=true
+RUN if [ ${GLOBAL_CHANGE_SOURCE} = true ]; then \
 	mv /etc/apt/sources.list /etc/apt/source.list.bak && mv /etc/apt/china.sources.list /etc/apt/sources.list \
-; fi
+;fi
 
 RUN  apt-get -o Acquire::Check-Valid-Until=false update && apt-get -y upgrade
 
@@ -39,6 +39,6 @@ ADD composer.phar /usr/local/bin/composer
 RUN chmod 755 /usr/local/bin/composer
 
 # 是否设置中国源
-RUN if [ ${CHANGE_SOURCE} = true ]; then \
+RUN if [ $GLOBAL_CHANGE_SOURCE = true ]; then \
 	composer config -g repo.packagist composer https://packagist.laravel-china.org \
 ;fi

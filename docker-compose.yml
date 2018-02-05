@@ -32,7 +32,6 @@ php71:
       - ${APP_PATH}work/components/php71/log:/var/log
     environment:
       TIME_ZONE: ${GLOBAL_TIME_ZONE}
-      CHANGE_SOURCE: ${GLOBAL_CHANGE_SOURCE}
 
 ### Mysql 容器 #########################################
 

@@ -44,6 +44,8 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 
 启动成功访问 http://localhost 出现 <a target="_blank" href="https://static.phptalk.cn/dockerlnmpv2.jpeg">安装成功页面</a>
 
+### 可能遇到的问题
+
 ##### 常用操作命令
 
     # 查看当前启动的容器

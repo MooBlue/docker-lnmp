@@ -35,7 +35,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     git clone https://github.com/beautysoft/docker-lnmp.git
 
     cd docker-lnmp
-    mv .env-example .env
+    cp .env-example .env
 
     # 配置应用目录、数据库密码、时区、端口等
     vim .env

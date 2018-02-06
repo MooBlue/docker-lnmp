@@ -1,22 +1,30 @@
 ## Docker LNMP 2.0
 
-> Docker-LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在短时间内随意构建不同版本的相关服务、环境统一分布在不同服务器等，使开发者能够更专注于开发业务本身。另外产品针对国内用户提供了良好的本地化定制（系统时区为中国、apt-get 源为 163、php composer 为 laravel-china 的）
+Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在短时间内随意构建不同版本的相关服务、环境统一分布在不同服务器等，使开发者能够更专注于开发业务本身。
 
-    # 当前版本   ：2.0
-    # 默认服务   ：PHP-FPM 7.1、Nginx 1.12.1、mysql 5.6、redis 3.2
-    # 服务默认端口：http:80/443，php-fpm71:9071，mysql:3366，redis:6399
-    
-    # 目录结构
-        |docker-lnmp
-        |----/build                  镜像构建目录
-        |----/work                   持久化目录
-        |--------/components/        组件库
-        |------------/component      组件，包括了数据、配置文件、日志等持久化数据
-        |-----------------/config    组件的配置目录
-        |-----------------/log       组件的日志目录
-        |--------/wwwroot            WEB 文件目录
-        |----/.env-example           配置文件
-        |----/docker-compose.yml     docker compose 配置文件
+##### 产品特色
+
+* 灵活切换适合国内的源
+* 组件精简易懂，学习、生产均适合
+* 良好的扩展性
+
+##### 版本及组件
+
+* 当前版本：2.0
+* 自带组件：PHP/FPM 7.1、Nginx 1.12.1、mysql 5.6、redis 3.2
+
+##### 目录结构
+
+    docker-lnmp
+    |----/build                  镜像构建目录
+    |----/work                   持久化目录
+    |--------/components/        组件库
+    |------------/component      组件，包括了数据、配置文件、日志等持久化数据
+    |-----------------/config    组件的配置目录
+    |-----------------/log       组件的日志目录
+    |--------/wwwroot            WEB 文件目录
+    |----/.env-example           配置文件
+    |----/docker-compose.yml     docker compose 配置文件
 
 ### 安装
 
@@ -28,14 +36,17 @@
     cd docker-lnmp
     mv .env-example .env
 
-    # 如果当前目录不在 ~/ 修改 .env 文件，默认会构建所有服务,MySQL root 初始密码：DockerLNMP
+    # 配置应用目录、数据库密码、时区、端口等
+    vim .env
+    
+    # 构建镜像并启动容器
     sudo docker-compose up --build -d
 
 启动成功访问 `localhost` 出现安装成功页面
 
 <img src="https://static.phptalk.cn/docker-lnmp.jpg"/>
 
-#### 常用操作命令
+##### 常用操作命令
 
     # 查看当前启动的容器
     sudo docker ps
@@ -52,14 +63,14 @@
     # 删除所有镜像，-f 可以强制删除
     sudo docker rmi $(docker images -q)
 
-#### 修改镜像文件怎么处理？
+##### 修改镜像文件怎么处理？
     
     # 比如在 php 里新增一个扩展
     # 1、更改对应的 docker-lnmp/build/php71/dockerfile
     # 2、重新构建镜像
     sudo docker-compose build [php71|...]
 
-#### 如何设置开机启动服务？
+##### 如何设置开机启动服务？
 
     # 编辑开机启动文件，写入  cd /home/your/docker-lnmp && compose up -d
     # 注意这里不用 sudo，本身是使用 root 运行的
@@ -71,32 +82,29 @@
 
 ## 安装 Docker 及相关工具
 
-1、安装 docker 参考 daocloud 提供的文档
+##### 1、安装 docker 参考 daocloud 提供的文档
     
     # 注意按照文档如果执行类似 install docker-ce=17.03.1* 出错，执行 install docker-ce 即可
     https://download.daocloud.io/Docker_Mirror/Docker
 
-2、安装 docker-compose
+##### 2、安装 docker-compose
     
     # 注意：你如果用的是非 root 用户，执行 curl 会提示没权限写入 /usr/local/bin 目录，可以先写入当前目录，再使用 sudo mv 过去
     curl -L https://get.daocloud.io/docker/compose/releases/download/1.12.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 
-3、启动 Docker
+##### 3、启动 Docker
 
     sudo service docker start
     sudo docker info    
 
-4、配置 DockerHub 加速器（这简直是一定的）
+##### 4、配置 DockerHub 加速器（这简直是一定的）
 
-    # 阿里云加速器
-    # 每个人有对应的加速地址，访问 `https://dev.aliyun.com` ->【管理中心】-> 【DockerHub 镜像站点】配置加速器
+阿里云加速器：每个人有对应的加速地址，访问 https://dev.aliyun.com ->【管理中心】-> 【DockerHub 镜像站点】配置加速器
 
-    # DaoCloud 加速器
-    # http://guide.daocloud.io/dcs/daocloud-9153151.html
+DaoCloud 加速器：http://guide.daocloud.io/dcs/daocloud-9153151.html
 
-    # 腾讯云加速器
-    # https://www.qcloud.com/document/product/457/7207
+腾讯云加速器：https://www.qcloud.com/document/product/457/7207
 
 ## License
 MIT

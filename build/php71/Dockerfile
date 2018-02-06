@@ -1,44 +1,47 @@
 FROM php:7.1-fpm
 
+# ARGS
+ARG CHANGE_SOURCE=false
+
+# Change Timezone
 ARG TIME_ZONE=UTC
 ENV TIME_ZONE ${TIME_ZONE}
-
-# 更改时区
 RUN ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone
 
-# 是否更换源
+# Change China Sources
 COPY sources.list /etc/apt/china.sources.list
-
-ARG GLOBAL_CHANGE_SOURCE=true
-RUN if [ ${GLOBAL_CHANGE_SOURCE} = true ]; then \
+RUN if [ ${CHANGE_SOURCE} = true ]; then \
 	mv /etc/apt/sources.list /etc/apt/source.list.bak && mv /etc/apt/china.sources.list /etc/apt/sources.list \
 ;fi
 
 RUN  apt-get -o Acquire::Check-Valid-Until=false update && apt-get -y upgrade
 
-# 安装基础组件
+# Install Base Components
 RUN apt-get install -y --no-install-recommends libpng-dev libjpeg-dev libfreetype6-dev ntpdate cron vim unzip git
 
-# 安装扩展
+####################################################################################
+# Install Extension
+####################################################################################
+
 RUN docker-php-ext-configure gd --with-freetype-dir --with-jpeg-dir
 RUN docker-php-ext-install gd pdo_mysql mysqli
 
-# 安装 Redis 扩展
+# Redis
 COPY redis-3.1.3.tgz /home/redis.tgz
 RUN pecl install /home/redis.tgz \
 	&& echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
 
-# 安装 Mcrypt 加密扩展
+# Mcrypt
 COPY mcrypt-1.0.0.tgz /home/mcrypt.tgz
 RUN apt-get install -y libmcrypt-dev libmhash-dev \
 	&& pecl install /home/mcrypt.tgz \
 	&& echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini
 
-# 安装 composer
+# php composer
 ADD composer.phar /usr/local/bin/composer
 RUN chmod 755 /usr/local/bin/composer
 
-# 是否设置中国源
-RUN if [ $GLOBAL_CHANGE_SOURCE = true ]; then \
+# Setup Composer Source
+RUN if [ $CHANGE_SOURCE = true ]; then \
 	composer config -g repo.packagist composer https://packagist.laravel-china.org \
 ;fi

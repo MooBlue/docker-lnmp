@@ -81,6 +81,48 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     # 重启测试
     sudo reboot
 
+##### 如何在 php 里连接 mysql 和 redis
+
+连接 Mysql
+
+    <?php
+        try {
+        
+            $user = "root";
+            $pass = "DockerLNMP";
+            
+            $dbh = new PDO('mysql:host=mysql;dbname=mysql', $user, $pass);
+            
+            foreach($dbh->query('SELECT * from user') as $row) {
+                print_r($row);
+            }
+            
+        } catch (PDOException $e) {
+        
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+            
+        }
+    ?>
+
+连接 Redis
+
+    <?php
+
+       $redis = new Redis();
+       $conn = $redis->connect('redis', 6379);
+    
+       if($conn){
+    
+           $redis->set("test-key","hello");
+    
+           echo "Stored string in redis:: " . $redis->get("test-key");
+    
+       }else{
+          echo "连接失败";
+       }
+    ?>
+
 ## 安装 Docker 及相关工具
 
 ##### 1、安装 docker 参考 daocloud 提供的文档

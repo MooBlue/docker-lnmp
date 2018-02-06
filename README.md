@@ -26,7 +26,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     |----/.env-example           配置文件
     |----/docker-compose.yml     docker compose 配置文件
 
-### 安装
+#### 开始安装
 
 没有安装 Docker 的同学移步 [安装教程](https://github.com/beautysoft/docker-lnmp#安装-docker-及相关工具)
 
@@ -44,7 +44,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 
 启动成功访问 http://localhost 出现 <a target="_blank" href="https://static.phptalk.cn/dockerlnmpv2.jpeg">安装成功页面</a>
 
-### 可能遇到的问题
+#### 可能遇到的问题
 
 ##### 常用操作命令
 

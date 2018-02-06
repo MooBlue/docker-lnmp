@@ -42,10 +42,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     # 构建镜像并启动容器
     sudo docker-compose up --build -d
 
-启动成功访问 http://localhost 出现安装成功页面
-
-<p align="center">
-<img width="500" src="https://static.phptalk.cn/dockerlnmpv2.jpeg"/></p>
+启动成功访问 http://localhost 出现 <a target="_blank" href="https://static.phptalk.cn/dockerlnmpv2.jpeg">安装成功页面</a>
 
 ##### 常用操作命令
 

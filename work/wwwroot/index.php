@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Docker LNMP 2.0</title>
+	<title>Docker LNMP</title>
 	<style type="text/css">
 		html{
 			font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%
@@ -10,6 +10,12 @@
 			font-size:30px;margin-top:200px;
 			color:#333;
 		}
+		.desc{
+			text-align: center;
+			color:#ccc;
+			margin-bottom: 50px;
+			line-height: 30px;
+		}
 		footer{
 			text-align: center;
 		}
@@ -17,7 +23,7 @@
 			color:#fff;
 			background: #F95445;
 			display: block;
-			width: 150px;
+			width: 180px;
 			margin:0 auto;
 			text-decoration: none;
 			line-height: 40px;
@@ -28,13 +34,19 @@
 </head>
 <body>
 
-<p align="center" class="mine">欢迎使用 Docker LNMP 2.0</p>
+<p align="center" class="mine">Docker LNMP</p>
+
+<p class="desc">
+	Version：2.0<br />
+	Time：<?= date_default_timezone_get() . "&nbsp;/&nbsp;" . date("Y-m-d H:i:s");?>
+</p>
 
 <footer>
-	<a href="https://github.com/beautysoft/docker-lnmp" target="_blank">查看说明文档</a>
+	<a href="https://github.com/beautysoft/docker-lnmp" target="_blank">Get Documentation</a>
+
 
 	<p style="color:#ccc;font-size:12px;margin-top:100px;">
-		&copy; BeautySoft 出品
+		&copy; <?php echo date("Y")?>&nbsp;BeautySoft
 	</p>
 </footer>
 

@@ -12,7 +12,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 ##### 版本及组件
 
 * 当前版本：2.0
-* 自带组件：PHP/FPM 7.1、Nginx 1.12.1、Mysql 5.6、Redis 3.2
+* 自带组件：PHP/FPM 7.1、Nginx 1.12.1、Mysql 5.6、Redis 4.0.8
 
 ##### 目录结构
 
@@ -99,6 +99,10 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
         $redis->set("test-key","hello");
         echo "Stored string in redis:: " . $redis->get("test-key");
     ?>
+
+##### 其他的坑
+
+如果需要升级某些组件的版本需要注意载入对应版本的配置文件，修改对应的配置信息，比如 redis.conf 默认配置的出口 ip 为 127.0.0.1，这样的话 php 的容器是连不上的，需要修改成 0.0.0.0，另外也要注意修改对应的 log path。
 
 ## 安装 Docker 及相关工具
 

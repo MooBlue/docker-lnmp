@@ -40,7 +40,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     # 配置应用目录、数据库密码、时区、端口等
     vim .env
     
-    # 构建镜像并启动容器
+    # 构建镜像并启动容器，如果某些容器起不来注意检查 work 下面的组件目录是否有可写权限
     sudo docker-compose up --build -d
 
 启动成功访问 http://localhost 出现 <a target="_blank" href="https://static.phptalk.cn/dockerlnmpv2.jpeg">安装成功页面</a>

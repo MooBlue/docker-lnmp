@@ -46,6 +46,7 @@ services:
         context: ./build/mysql
         args:
           TIME_ZONE: ${GLOBAL_TIME_ZONE}
+          CHANGE_SOURCE: ${GLOBAL_CHANGE_SOURCE}
       privileged: true
       ports:
         - "${MYSQL_PORT}:3306"
@@ -53,6 +54,7 @@ services:
         - ${GLOBAL_APP_PATH}work/components/mysql/data:/var/lib/mysql
         - ${GLOBAL_APP_PATH}work/components/mysql/config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
         - ${GLOBAL_APP_PATH}work/components/mysql/log/error.log:/var/log/mysql/error.log
+        - ${GLOBAL_APP_PATH}work/components/mysql/backup:/var/backup
       environment:
         MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
 

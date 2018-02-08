@@ -55,6 +55,7 @@ services:
         - ${GLOBAL_APP_PATH}work/components/mysql/config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
         - ${GLOBAL_APP_PATH}work/components/mysql/log/error.log:/var/log/mysql/error.log
         - ${GLOBAL_APP_PATH}work/components/mysql/backup:/var/backup
+        - ${GLOBAL_APP_PATH}work/components/mysql/crontabs:/var/spool/cron/crontabs
       environment:
         MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
 

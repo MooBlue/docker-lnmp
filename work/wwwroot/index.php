@@ -46,7 +46,7 @@
 
 
 	<p style="color:#ccc;font-size:12px;margin-top:100px;">
-		&copy; <?php echo date("Y")?>&nbsp;BeautySoft
+		&copy; <?php echo date("Y")?>&nbsp;exc-soft.com
 	</p>
 </footer>
 
